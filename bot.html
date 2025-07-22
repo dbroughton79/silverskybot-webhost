@@ -2,24 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PIM Assistant Minimal</title>
+  <title>Silversky PIM Assistant - iframe embed</title>
   <style>
-    html, body, #bp-webchat {
-      margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden;
-      background: transparent;
+    html, body {
+      margin: 0; padding: 0; height: 100%; width: 100%;
+      display: flex; justify-content: center; align-items: center;
+      background: #f0f0f0;
+      height: 100vh;
+    }
+    .webchat {
+      height: 600px;
+      width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+    }
+    iframe {
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
-  <div id="bp-webchat"></div>
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-  <script>
-    window.botpressWebChat.init({
-      container: '#bp-webchat',
-      configUrl: 'https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json',
-      showConversationsButton: false,
-      enableTranscriptDownload: false
-    });
-  </script>
+  <div class="webchat">
+    <iframe
+      srcdoc='
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <title>Botpress Webchat iframe</title>
+            <style>
+              html, body, #bp-webchat {
+                margin: 0; padding: 0; height: 100%; width: 100%;
+                overflow: hidden;
+              }
+            </style>
+          </head>
+          <body>
+            <div id="bp-webchat"></div>
+            <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+            <script defer>
+              window.botpressWebChat.init({
+                container: "#bp-webchat",
+                configUrl: "https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json",
+                showConversationsButton: false,
+                enableTranscriptDownload: false
+              });
+              window.botpress.on("webchat:ready", () => {
+                botpress.open();
+              });
+            </script>
+          </body>
+        </html>'
+    ></iframe>
+  </div>
 </body>
 </html>
