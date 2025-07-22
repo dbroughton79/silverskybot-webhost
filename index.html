@@ -9,15 +9,66 @@
       margin: 0;
       height: 100%;
       background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
     }
     iframe {
+      position: fixed;
+      bottom: 90px; /* space for button */
+      right: 20px;
+      width: 350px;
+      height: 500px;
       border: none;
-      width: 100vw;
-      height: 100vh;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      display: block; /* initially visible */
+      z-index: 9998;
+    }
+    #chatToggleBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background-color: #0078d4;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 9999;
+      transition: background-color 0.3s ease;
+    }
+    #chatToggleBtn:hover {
+      background-color: #005a9e;
     }
   </style>
 </head>
 <body>
-  <iframe src="https://cdn.botpress.cloud/webchat/v3.1/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json"></iframe>
+  <iframe
+    src="https://cdn.botpress.cloud/webchat/v3.1/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json"
+    id="chatIframe"
+  ></iframe>
+
+  <button id="chatToggleBtn" aria-label="Toggle chat window">💬</button>
+
+  <script>
+    const btn = document.getElementById('chatToggleBtn');
+    const iframe = document.getElementById('chatIframe');
+
+    btn.onclick = () => {
+      if (iframe.style.display === 'none') {
+        iframe.style.display = 'block';
+        btn.textContent = '✖️';
+      } else {
+        iframe.style.display = 'none';
+        btn.textContent = '💬';
+      }
+    };
+
+    // Start with chat visible
+    iframe.style.display = 'block';
+    btn.textContent = '✖️';
+  </script>
 </body>
 </html>
