@@ -2,31 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Silversky Bot Widget</title>
+  <title>Silversky IT Assistant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: transparent;
+      margin: 0; padding: 0; height: 100%; background: #f9f9f9; font-family: Arial, sans-serif;
+    }
+    #welcome {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 320px;
+      padding: 10px 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      font-size: 14px;
+      z-index: 10000;
+      color: #333;
     }
     iframe {
       position: fixed;
       bottom: 70px;
-      right: 15px;
+      right: 20px;
       width: 320px;
       height: 420px;
       border: none;
-      box-shadow: none;
-      border-radius: 0;
-      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      display: none; /* start hidden */
       z-index: 9998;
     }
     #chatToggleBtn {
       position: fixed;
-      bottom: 15px;
-      right: 15px;
+      bottom: 20px;
+      right: 20px;
       width: 56px;
       height: 56px;
       border-radius: 50%;
@@ -36,12 +46,17 @@
       font-size: 28px;
       cursor: pointer;
       box-shadow: none;
-      transition: none;
       z-index: 9999;
     }
   </style>
 </head>
 <body>
+
+  <div id="welcome">
+    💬 Welcome to the Silversky IT Assistant!<br/>
+    Click the chat bubble below anytime to ask questions or get help.
+  </div>
+
   <iframe
     src="https://cdn.botpress.cloud/webchat/v3.1/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json"
     id="chatIframe"
@@ -52,20 +67,25 @@
   <script>
     const btn = document.getElementById('chatToggleBtn');
     const iframe = document.getElementById('chatIframe');
+    const welcome = document.getElementById('welcome');
 
     btn.onclick = () => {
       if (iframe.style.display === 'none') {
         iframe.style.display = 'block';
+        welcome.style.display = 'none';
         btn.textContent = '✖️';
       } else {
         iframe.style.display = 'none';
+        welcome.style.display = 'block';
         btn.textContent = '💬';
       }
     };
 
-    // Start with chat hidden for minimal look
+    // Start with chat hidden and welcome visible
     iframe.style.display = 'none';
+    welcome.style.display = 'block';
     btn.textContent = '💬';
   </script>
+
 </body>
 </html>
