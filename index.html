@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Silversky PIM Assistant</title>
-  <script src="https://cdn.botpress.cloud/webchat/v3"></script>
   <style>
     body {
       margin: 0;
@@ -13,26 +12,25 @@
       font-family: Arial, sans-serif;
       overflow: hidden;
     }
-    #bp-web-widget {
-      position: fixed !important;
-      bottom: 20px !important;
-      right: 20px !important;
-      width: 350px !important;
-      height: 500px !important;
-      max-height: 90vh !important;
-      border-radius: 12px !important;
+    iframe {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      height: 500px;
+      max-height: 90vh;
+      border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 9999 !important;
+      border: none;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
-  <script>
-    window.botpressWebChat.init({
-      configUrl: "https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json",
-      hideWidget: false,
-      showWidget: true
-    });
-  </script>
+  <iframe 
+    src="https://cdn.botpress.cloud/webchat/v3.1/shareable.html?configUrl=https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json" 
+    allow="microphone; autoplay"
+    title="Silversky PIM Assistant Chatbot"
+  ></iframe>
 </body>
 </html>
