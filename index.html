@@ -2,26 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Silversky PIM Assistant</title>
   <script src="https://cdn.botpress.cloud/webchat/v3"></script>
   <style>
-    /* Optional: Background if you want a nice clean layout */
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      background: #f4f4f4;
       height: 100vh;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
     }
-
-    /* Bot widget style tweaks */
     #bp-web-widget {
-      bottom: 20px;
-      right: 20px;
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
       width: 350px !important;
       height: 500px !important;
-      max-height: 90vh;
+      max-height: 90vh !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 9999 !important;
     }
   </style>
 </head>
