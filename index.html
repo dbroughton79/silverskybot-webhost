@@ -2,45 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Silversky Bot</title>
+  <title>Silversky Bot Widget</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
-      background-color: #f4f4f4;
-      font-family: Arial, sans-serif;
+      background: transparent;
     }
     iframe {
       position: fixed;
-      bottom: 90px; /* space for button */
-      right: 20px;
-      width: 350px;
-      height: 500px;
+      bottom: 70px;
+      right: 15px;
+      width: 320px;
+      height: 420px;
       border: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      border-radius: 8px;
-      display: block; /* initially visible */
+      box-shadow: none;
+      border-radius: 0;
+      display: block;
       z-index: 9998;
     }
     #chatToggleBtn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
+      bottom: 15px;
+      right: 15px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       border: none;
       background-color: #0078d4;
       color: white;
-      font-size: 30px;
+      font-size: 28px;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: none;
+      transition: none;
       z-index: 9999;
-      transition: background-color 0.3s ease;
-    }
-    #chatToggleBtn:hover {
-      background-color: #005a9e;
     }
   </style>
 </head>
@@ -66,9 +63,9 @@
       }
     };
 
-    // Start with chat visible
-    iframe.style.display = 'block';
-    btn.textContent = '✖️';
+    // Start with chat hidden for minimal look
+    iframe.style.display = 'none';
+    btn.textContent = '💬';
   </script>
 </body>
 </html>
