@@ -29,25 +29,28 @@
   <div class="webchat">
     <iframe
       srcdoc='
-        <!DOCTYPE html>
+        <!doctype html>
         <html lang="en">
-          <head>
-            <meta charset="UTF-8" />
-            <title>Botpress Webchat</title>
-            <style>html, body, #bp-webchat { height: 100%; margin: 0; }</style>
-          </head>
+          <head></head>
           <body>
-            <div id="bp-webchat"></div>
-            <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-            <script>
-              window.botpressWebChat.init({
-                container: "#bp-webchat",
-                configUrl: "https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json",
-                showConversationsButton: false,
-                enableTranscriptDownload: false
-              });
+            <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+            <script defer>
               window.botpress.on("webchat:ready", () => {
                 botpress.open();
+              });
+              window.botpress.init({
+                "botId": "ed42a8de-1758-4f2a-b39b-10f5f552f865",
+                "configuration": {
+                  "website": {},
+                  "email": {},
+                  "phone": {},
+                  "termsOfService": {},
+                  "privacyPolicy": {},
+                  "variant": "soft",
+                  "themeMode": "light",
+                  "fontFamily": "inter"
+                },
+                "clientId": "1f86d3a5-de49-41ac-bc84-bad4b0c92e13"
               });
             </script>
           </body>
