@@ -2,23 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Test Botpress Embed</title>
-  <style>html, body, #bp-webchat { height: 100%; margin: 0; }</style>
+  <title>Silversky PIM Assistant Embed</title>
+  <style>
+    html, body, #bp-webchat {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f0f0f0;
+    }
+    .webchat {
+      height: 600px;
+      width: 400px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+    }
+    iframe {
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+  </style>
 </head>
 <body>
-  <div id="bp-webchat" style="height: 600px; width: 400px;"></div>
-
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-  <script>
-    window.botpressWebChat.init({
-      container: "#bp-webchat",
-      configUrl: "https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json",
-      showConversationsButton: false,
-      enableTranscriptDownload: false
-    });
-    window.botpress.on("webchat:ready", () => {
-      botpress.open();
-    });
-  </script>
+  <div class="webchat">
+    <iframe
+      srcdoc='
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <title>Botpress Webchat</title>
+            <style>html, body, #bp-webchat { height: 100%; margin: 0; }</style>
+          </head>
+          <body>
+            <div id="bp-webchat"></div>
+            <script>
+              const script = document.createElement("script");
+              script.src = "https://cdn.botpress.cloud/webchat/v3.2/inject.js";
+              script.onload = () => {
+                window.botpressWebChat.init({
+                  container: "#bp-webchat",
+                  configUrl: "https://files.bpcontent.cloud/2025/07/21/18/20250721185906-YGO2DG50.json",
+                  showConversationsButton: false,
+                  enableTranscriptDownload: false
+                });
+                window.botpress.on("webchat:ready", () => {
+                  botpress.open();
+                });
+              };
+              document.head.appendChild(script);
+            </script>
+          </body>
+        </html>'
+    ></iframe>
+  </div>
 </body>
 </html>
